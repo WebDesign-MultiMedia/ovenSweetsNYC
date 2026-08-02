@@ -97,6 +97,30 @@ export function IconChevronDown(props: SVGProps<SVGSVGElement>) {
   )
 }
 
+export function IconArrowRight(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path stroke="currentColor" d="M5 12h14M13 6l6 6-6 6" />
+    </svg>
+  )
+}
+
+export function IconMenu(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path stroke="currentColor" d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  )
+}
+
+export function IconClose(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path stroke="currentColor" d="M6 6l12 12M18 6 6 18" />
+    </svg>
+  )
+}
+
 export function IconUpload(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" {...props}>

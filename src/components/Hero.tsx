@@ -1,3 +1,4 @@
+import { useLanguage } from '../i18n/LanguageContext'
 import { IconMapPin } from './icons'
 
 interface HeroProps {
@@ -5,6 +6,8 @@ interface HeroProps {
 }
 
 export default function Hero({ onRequestQuote }: HeroProps) {
+  const { t } = useLanguage()
+
   return (
     <section
       id="home"
@@ -19,25 +22,23 @@ export default function Hero({ onRequestQuote }: HeroProps) {
 
       <span className="relative inline-flex items-center gap-1.5 rounded-full border border-rose-deep/30 bg-white/70 px-4 py-1.5 font-heading text-sm font-medium text-chocolate">
         <IconMapPin className="h-4 w-4 text-rose-deep" />
-        Bronx, NY
+        {t.hero.badgeLocation}
       </span>
 
       <h1 className="relative font-heading text-4xl font-semibold leading-tight text-chocolate md:text-6xl">
-        FRESHLY BAKED
+        {t.hero.titleLine1}
         <br />
-        <span className="text-rose-deep">Cakes &amp; Desserts</span>
+        <span className="text-rose-deep">{t.hero.titleLine2}</span>
       </h1>
 
-      <p className="relative max-w-xl text-base text-chocolate/80 md:text-lg">
-        Custom cakes, flans, and gelatinas made fresh for your next celebration.
-      </p>
+      <p className="relative max-w-xl text-base text-chocolate/80 md:text-lg">{t.hero.subtitle}</p>
 
       <button
         type="button"
         onClick={onRequestQuote}
         className="relative rounded-full bg-rose-deep px-8 py-3.5 font-heading text-base font-semibold text-white shadow-md transition-transform hover:scale-105 hover:bg-chocolate"
       >
-        Request a Custom Quote
+        {t.hero.cta}
       </button>
     </section>
   )

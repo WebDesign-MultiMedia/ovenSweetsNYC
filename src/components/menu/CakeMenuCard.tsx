@@ -1,23 +1,27 @@
+import { useLanguage } from '../../i18n/LanguageContext'
 import { BulletList, MenuCard, MenuSubheading } from './MenuCard'
 
 export default function CakeMenuCard() {
+  const { t } = useLanguage()
+  const cake = t.menu.cake
+
   return (
-    <MenuCard title="CAKE MENU">
+    <MenuCard title={cake.title}>
       <div>
-        <MenuSubheading>Round Cakes:</MenuSubheading>
-        <BulletList items={['7" Cake', '9" Cake', '10" Cake']} />
+        <MenuSubheading>{cake.roundCakesLabel}</MenuSubheading>
+        <BulletList items={cake.roundCakes} />
       </div>
 
       <div>
-        <MenuSubheading>Heart Cake:</MenuSubheading>
-        <BulletList items={['10" Cake']} />
+        <MenuSubheading>{cake.heartCakeLabel}</MenuSubheading>
+        <BulletList items={cake.heartCake} />
       </div>
 
       <div className="rounded-2xl bg-blush px-4 py-3 text-sm text-chocolate/90">
-        <p className="font-semibold">We also make customized cakes</p>
-        <p>Please private message for inquires</p>
+        <p className="font-semibold">{cake.customNoteBold}</p>
+        <p>{cake.customNoteText}</p>
         <p>
-          instagram:{' '}
+          {cake.instagramLabel}{' '}
           <a
             href="https://www.instagram.com/oven_sweets_nyc?igsh=YWtpNzBmb2cwbGhi"
             target="_blank"
@@ -30,25 +34,13 @@ export default function CakeMenuCard() {
       </div>
 
       <div>
-        <MenuSubheading>Flavors:</MenuSubheading>
-        <BulletList
-          items={['Chocolate', 'Strawberry', 'Vanilla', 'Confetti', 'Red Velvet', 'Tiramisu', 'Tres Leches']}
-        />
+        <MenuSubheading>{cake.flavorsLabel}</MenuSubheading>
+        <BulletList items={cake.flavors} />
       </div>
 
       <div>
-        <MenuSubheading>Fillings:</MenuSubheading>
-        <BulletList
-          items={[
-            'Vanilla Buttercream',
-            'Chocolate buttercream',
-            'Nutella',
-            'Chocolate fudge',
-            'Oreo pieces/ Oreo Cream',
-            'Dulce De Leche',
-            'Fresh Fruit (Additional Charge)',
-          ]}
-        />
+        <MenuSubheading>{cake.fillingsLabel}</MenuSubheading>
+        <BulletList items={cake.fillings} />
       </div>
     </MenuCard>
   )

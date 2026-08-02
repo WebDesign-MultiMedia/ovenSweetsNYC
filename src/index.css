@@ -33,3 +33,16 @@ h4,
 .font-heading {
   font-family: var(--font-heading);
 }
+
+@keyframes section-highlight {
+  0% {
+    background-color: color-mix(in srgb, var(--color-rose) 40%, transparent);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.highlight-flash {
+  animation: section-highlight 1.6s ease-out;
+}

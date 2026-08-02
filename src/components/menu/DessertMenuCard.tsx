@@ -1,28 +1,30 @@
+import { useLanguage } from '../../i18n/LanguageContext'
 import { BulletList, MenuCard, MenuNote, MenuSubheading } from './MenuCard'
 
 export default function DessertMenuCard() {
+  const { t } = useLanguage()
+  const dessert = t.menu.dessert
+
   return (
-    <MenuCard title="DESSERT MENU">
+    <MenuCard title={dessert.title}>
       <div>
-        <MenuSubheading>Flans:</MenuSubheading>
-        <BulletList
-          items={['Classic flan (Heart, round or butterfly shape)', 'Chocoflan', 'Mini flans', 'Mini chocoflans']}
-        />
+        <MenuSubheading>{dessert.flansLabel}</MenuSubheading>
+        <BulletList items={dessert.flans} />
       </div>
 
       <div>
-        <MenuSubheading>Gelatinas:</MenuSubheading>
-        <BulletList items={['Mosaico', 'Gelatina', 'Mini Mosaicos', 'Mini Gelatinas']} />
+        <MenuSubheading>{dessert.gelatinasLabel}</MenuSubheading>
+        <BulletList items={dessert.gelatinas} />
       </div>
 
       <div>
-        <MenuSubheading>Flavors:</MenuSubheading>
-        <BulletList items={['Strawberry', 'Mango', 'Lime', 'Chocolate']} />
+        <MenuSubheading>{dessert.flavorsLabel}</MenuSubheading>
+        <BulletList items={dessert.flavors} />
       </div>
 
       <div className="rounded-2xl bg-blush px-4 py-3">
-        <MenuNote>Flans and Gelatinas can include Fresh Fruit (Additional Charge)</MenuNote>
-        <p className="mt-1 text-sm text-chocolate/90">Flavor requests are more than welcomed</p>
+        <MenuNote>{dessert.noteBold}</MenuNote>
+        <p className="mt-1 text-sm text-chocolate/90">{dessert.noteText}</p>
       </div>
     </MenuCard>
   )

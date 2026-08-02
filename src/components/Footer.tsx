@@ -1,3 +1,4 @@
+import { useLanguage } from '../i18n/LanguageContext'
 import { IconFacebook, IconInstagram, IconMapPin, IconPhone, IconTikTok } from './icons'
 
 const SOCIALS = [
@@ -19,12 +20,14 @@ const SOCIALS = [
 ]
 
 export default function Footer() {
+  const { t } = useLanguage()
+
   return (
     <footer className="bg-chocolate px-4 py-10 text-cream md:px-8 md:py-14">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center">
         <div>
           <p className="font-heading text-xl font-semibold">Oven Sweets NYC</p>
-          <p className="text-sm text-cream/70">Freshly Baked Cakes &amp; Desserts</p>
+          <p className="text-sm text-cream/70">{t.header.tagline}</p>
         </div>
 
         <div className="flex flex-col items-center gap-2 text-sm text-cream/90 md:flex-row md:gap-6">
@@ -34,7 +37,7 @@ export default function Footer() {
           </a>
           <span className="flex items-center gap-2">
             <IconMapPin className="h-4 w-4" />
-            Bronx, NY
+            {t.hero.badgeLocation}
           </span>
         </div>
 
@@ -53,7 +56,9 @@ export default function Footer() {
           ))}
         </div>
 
-        <p className="text-xs text-cream/50">© {new Date().getFullYear()} Oven Sweets NYC. All rights reserved.</p>
+        <p className="text-xs text-cream/50">
+          © {new Date().getFullYear()} Oven Sweets NYC. {t.footer.rightsReserved}
+        </p>
       </div>
     </footer>
   )

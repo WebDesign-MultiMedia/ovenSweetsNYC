@@ -14,7 +14,7 @@ const SOCIALS = [
   },
   {
     label: 'TikTok',
-    href: 'https://www.tiktok.com/@oven_sweets_nyc',
+    href: 'https://www.tiktok.com/@oven.sweets.nyc?is_from_webapp=1&sender_device=pc',
     Icon: IconTikTok,
   },
 ]

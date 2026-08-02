@@ -24,14 +24,15 @@ const TAB_LABEL_KEY: Record<MobileTab, keyof Translations['nav']> = {
   quote: 'quoteRequest',
 }
 
-// Standard math degrees (0 = right, 90 = up, 180 = left), sweeping from just
-// below straight-left up to just left of straight-up — a quarter-circle fan.
-const ARC_ANGLES_DEG = [196, 162, 128, 94]
-const ARC_RADIUS = 136
+// Bubbles line up along a diagonal from the FAB (bottom-right) toward the
+// top-left, leaning more vertical than horizontal so they stay clear of the
+// left edge on narrow phones while still reading as a clean diagonal line.
+const DIAGONAL_DX = -52
+const DIAGONAL_DY = -94
 
-function bubbleOffset(angleDeg: number) {
-  const rad = (angleDeg * Math.PI) / 180
-  return { x: Math.cos(rad) * ARC_RADIUS, y: -Math.sin(rad) * ARC_RADIUS }
+function bubbleOffset(index: number) {
+  const step = index + 1
+  return { x: DIAGONAL_DX * step, y: DIAGONAL_DY * step }
 }
 
 export default function MobileTabBar({ active, onChange }: MobileTabBarProps) {
@@ -58,7 +59,7 @@ export default function MobileTabBar({ active, onChange }: MobileTabBarProps) {
         {MOBILE_TAB_ORDER.map((tabId, index) => {
           const Icon = TAB_ICONS[tabId]
           const isActive = active === tabId
-          const { x, y } = bubbleOffset(ARC_ANGLES_DEG[index])
+          const { x, y } = bubbleOffset(index)
 
           return (
             <button
@@ -78,7 +79,7 @@ export default function MobileTabBar({ active, onChange }: MobileTabBarProps) {
             >
               <span
                 className={`flex h-14 w-14 flex-none items-center justify-center rounded-full border-2 shadow-lg ${
-                  isActive ? 'border-white bg-chocolate text-white' : 'border-white/70 bg-rose-deep text-white'
+                  isActive ? 'border-white bg-rose-deep text-white' : 'border-rose-deep/30 bg-blush text-chocolate'
                 }`}
               >
                 <Icon className="h-5 w-5" />
@@ -95,7 +96,7 @@ export default function MobileTabBar({ active, onChange }: MobileTabBarProps) {
           onClick={() => setIsOpen((prev) => !prev)}
           aria-expanded={isOpen}
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
-          className="relative flex h-16 w-16 items-center justify-center rounded-full bg-chocolate text-white shadow-xl transition-transform hover:scale-105"
+          className="relative flex h-16 w-16 items-center justify-center rounded-full border-2 border-rose-deep/30 bg-blush text-chocolate shadow-xl transition-transform hover:scale-105"
         >
           {isOpen ? <IconClose className="h-6 w-6" /> : <IconMenu className="h-6 w-6" />}
         </button>

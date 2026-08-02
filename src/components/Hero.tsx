@@ -1,11 +1,14 @@
 import { useLanguage } from '../i18n/LanguageContext'
+import type { MobileTab } from '../types'
 import { IconMapPin } from './icons'
+import MobileQuickNav from './MobileQuickNav'
 
 interface HeroProps {
   onRequestQuote: () => void
+  onNavigate?: (target: MobileTab) => void
 }
 
-export default function Hero({ onRequestQuote }: HeroProps) {
+export default function Hero({ onRequestQuote, onNavigate }: HeroProps) {
   const { t } = useLanguage()
 
   return (
@@ -40,6 +43,8 @@ export default function Hero({ onRequestQuote }: HeroProps) {
       >
         {t.hero.cta}
       </button>
+
+      {onNavigate && <MobileQuickNav current="home" onNavigate={onNavigate} className="relative pt-1" />}
     </section>
   )
 }
